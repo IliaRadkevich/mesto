@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Путешествия</title>
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="./blocks/header/__logo/headerlogo.svg" alt="логотип Место Россия" class="header__logo">
+    </header>
+    <section class="popup">
+      <form class="popup__container">
+        <button class="popup__close"><img src="./blocks/popup/__close/CloseIcon.png" alt="белый крестик"></button>
+        <h2 class="popup__description">Редактировать профиль</h2>
+        <fieldset class="popup__input-container">
+          <input type="text" placeholder="Имя" class="popup__input-name" required>
+          <input type="text"  placeholder="О себе" class="popup__input-occupation" required>
+          <button type="submit" class="popup__save-button-smaller"><img src="./blocks/popup/__save-buton-smaller/SubmitButtonSmaller.svg" alt="кнопка сохранить малая"></button>
+          <button type="submit" class="popup__save"><img src="./blocks/popup/__save/SubmitButton.png" alt="кнопка сохранить"></button>
+        </fieldset>
+      </form>
+    </section>
+    <section class="profile">
+      <img src="./blocks/profile/__avatar/Cuesteau.jpg" alt="Фотография Жак-Ива Кусто" class="profile__avatar">
+      <div class="profile__info">
+        <div class="profile__box">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button"><img src="./blocks/profile/__edit-button/EditButton.png" alt="кнопка редактирования"></button>
+        </div>
+        <p class="profile__occupation">Исследователь Океана</p>
+      </div>
+      <button class="profile__add-button"><img src="./blocks/profile/__add-button/AddButton.svg" alt="Кнопка добавления"></button>
+      <button class="profile__add-button-smaller"><img src="./blocks/profile/__add-button-smaller/AddButtonSmaller.svg" alt="Кнопка добавления малая"></button>
+    </section>
+    <section class="photo">
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1088404-unsplash.png" alt="Старая церковь в Карачаевске" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Карачаевск</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1404681-unsplash.png" alt="Вид на гору Эльбрус при закате" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Гора Эльбрус</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1556355-unsplash.png" alt="Вид на заснеженную гору из леса осенью" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Домбай</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1404681-unsplash.png" alt="Вид на гору Эльбрус при закате" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Эльбрус</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1556355-unsplash.png" alt="Вид на заснеженную гору из леса осенью" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Домбай</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+      <div class="photo__container">
+        <img src="./blocks/photo/__place/kirill-pershin-1088404-unsplash.png" alt="Вид на старую церковь" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title">Карачаево-Черкессия</h2>
+          <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
+          <button type="button" class="photo__like-active"><img src="./blocks/photo/__like-active/Union.png" alt="черное сердечко"></button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022. Илья Радкевич</p>
+    </footer>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

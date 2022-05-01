@@ -1,0 +1,16 @@
+.popup__save {
+  margin: 0 0 30px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 2px 2px 2px 2px;
+}
+.popup__save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width:900px) {
+  .popup__save {
+    display: none;
+  }
+}

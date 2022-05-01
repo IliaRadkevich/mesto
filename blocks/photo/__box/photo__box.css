@@ -1,0 +1,8 @@
+.photo__box {
+  display: flex;
+  justify-content: space-between;
+  max-width: 246px;
+  padding: 23px 0 23px 0;
+  margin: 0 auto;
+  background-color:  #FFFFFF;
+}

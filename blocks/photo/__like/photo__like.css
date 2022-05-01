@@ -1,0 +1,9 @@
+.photo__like {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.photo__like:hover {
+  opacity: 0.6;
+}
