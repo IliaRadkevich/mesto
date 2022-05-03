@@ -1,6 +1,6 @@
-.popup_closed {
+.popup__close {
   position: absolute;
-  background-image: url(../_closed/CloseIcon.svg);
+  background-image: url(../__close/CloseIcon.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #000000;
@@ -12,13 +12,13 @@
   top: -40px;
   right: -40px;
 }
-.popup_closed:hover {
+.popup__close:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
-  .popup_closed {
+  .popup__close {
     height: 20px;
     width: 20px;
     top: -40px;
