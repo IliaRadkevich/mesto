@@ -1,10 +1,11 @@
-.photo__like {
+.photo__like_active {
+  display: none;
   margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
 }
-.photo__like:hover {
+.photo__like_active :hover {
   opacity: 0.5;
   cursor: pointer;
 }
