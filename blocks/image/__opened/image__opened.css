@@ -1,0 +1,12 @@
+.image__opened {
+  max-width: 816px;
+  max-height: 540px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 900px) {
+  .image__opened {
+    max-width: 240px;
+    max-height: 299px;
+  }
+}

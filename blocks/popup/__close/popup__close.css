@@ -21,6 +21,6 @@
   .popup__close {
     transform: scale(63%);
     top: -40px;
-    right: 0;
+    right: -6px;
   }
 }

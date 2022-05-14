@@ -23,51 +23,9 @@
           <p class="profile__occupation">Исследователь Океана</p>
         </div>
         <button type="button" class="profile__add-button" aria-label="кнопка добавления картинок"></button>
-     </section>
-     <section class="photo">
-       <div class="photo__container">
-         <img src="./blocks/photo/__place/kirill-pershin-1088404-unsplash.png" alt="Старая церковь в Карачаевске" class="photo__place">
-          <div class="photo__box">
-            <h2 class="photo__title">Карачаевск</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-         </div>
-        </div>
-       <div class="photo__container">
-         <img src="./blocks/photo/__place/kirill-pershin-1404681-unsplash.png" alt="Вид на гору Эльбрус при закате" class="photo__place">
-          <div class="photo__box">
-            <h2 class="photo__title">Гора Эльбрус</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-          </div>
-        </div>
-        <div class="photo__container">
-         <img src="./blocks/photo/__place/kirill-pershin-1556355-unsplash.png" alt="Вид на заснеженную гору из леса осенью" class="photo__place">
-          <div class="photo__box">
-            <h2 class="photo__title">Домбай</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-          </div>
-        </div>
-        <div class="photo__container">
-          <img src="./blocks/photo/__place/kirill-pershin-1404681-unsplash.png" alt="Вид на гору Эльбрус при закате" class="photo__place">
-          <div class="photo__box">
-            <h2 class="photo__title">Эльбрус</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-         </div>
-        </div>
-        <div class="photo__container">
-          <img src="./blocks/photo/__place/kirill-pershin-1556355-unsplash.png" alt="Вид на заснеженную гору из леса осенью" class="photo__place">
-          <div class="photo__box">
-           <h2 class="photo__title">Домбай</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-          </div>
-       </div>
-       <div class="photo__container">
-          <img src="./blocks/photo/__place/kirill-pershin-1088404-unsplash.png" alt="Вид на старую церковь" class="photo__place">
-          <div class="photo__box">
-            <h2 class="photo__title">Карачаево-Черкессия</h2>
-            <button type="button" class="photo__like"><img src="./blocks/photo/__like/heartwhite.svg" alt="белое сердечко"></button>
-         </div>
-        </div>
       </section>
+      <div class="photo">
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022. Илья Радкевич</p>
@@ -86,6 +44,36 @@
         </form>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+  <div class="popup popup__add-image">
+   <div class="popup__container">
+      <button type="button" class="popup__close"></button>
+      <h2 class="popup__description">Новое место</h2>
+      <form method="post" name="personalinfo">
+        <fieldset class="popup__input-container">
+          <input type="text" name="imagename" placeholder="Название" class="popup__input-name popup__image-name" required>
+          <input type="text" name="imagelink" placeholder="Ссылка на картинку" class="popup__input-occupation popup__image-link" required>
+          <button type="submit" class="popup__save" aria-label="кнопка сохранить">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <template class="template-photo">
+    <div class="photo__container">
+      <button type="button" class="photo__delete"></button>
+      <img src="#" alt="" class="photo__place">
+        <div class="photo__box">
+          <h2 class="photo__title"></h2>
+          <button type="button" class="photo__like"></button>
+        </div>
+    </div>
+  </template>
+  <div class="popup image">
+    <div class="image__figure">
+      <img class="image__opened" src="#" alt="">
+      <p class="image__figcaption"></p>
+      <button type="button" class="popup__close image__close-button"></button>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

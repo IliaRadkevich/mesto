@@ -1,0 +1,12 @@
+.image__close-button {
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 900px) {
+  .image__close-button {
+    transform: scale(63%);
+    top: -40px;
+    right: -6px;
+  }
+}
