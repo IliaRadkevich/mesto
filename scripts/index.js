@@ -24,64 +24,64 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-const popup = document.querySelector('.popup');
-const popupAddImage = document.querySelector('.add');
-const popupOpenButton = document.querySelector('.profile__edit-button');
-const popupCloseButton = popup.querySelector('.popup__close');
-const popupCloseAddButton = popupAddImage.querySelector('.popup__close');
-const formElement = popup.querySelector('[name="personalinfo"]');
-const formdAdd = popupAddImage.querySelector('[name="personalinfo"]');
+const popupEditProfile = document.querySelector('.popup_profile_edit');
+const popupOpenAddImage = document.querySelector('.popup_image_add');
+const popupOpenProfileEdit = document.querySelector('.profile__edit-button');
+const popupCloseProfileEdit = popupEditProfile.querySelector('.popup__close');
+const popupCloseImageAdd = popupOpenAddImage.querySelector('.popup__close');
+const formElement =popupEditProfile.querySelector('[name="personalinfo"]');
+const formdAdd = popupOpenAddImage.querySelector('[name="personalinfo"]');
 const imageName = document.querySelector('[name="imagename"]');
 const imageLink = document.querySelector('[name="imagelink"]');
 const photos = document.querySelector('.photo');
 const cardTemplate = document.querySelector('.template-photo').content;
-const popupOpenAddButton = document.querySelector('.profile__add-button');
-const popupImage = document.querySelector('.image');
+const popupOpenImageAdd = document.querySelector('.profile__add-button');
+const popupImage = document.querySelector('.popup_image_zoom');
 const popupImageOpened = popupImage.querySelector('.image__opened');
+const imageSubtitle = popupImage.querySelector('.image__figcaption');
 const popupImageClosed = popupImage.querySelector('.popup__close');
-let job = document.querySelector('.popup__input-occupation');
-let occupation = document.querySelector('.profile__occupation');
-let name = document.querySelector('.popup__input-name');
-let title = document.querySelector('.profile__title');
-let nameInput = document.querySelector('.popup__input-name');
-let jobInput = document.querySelector('.popup__input-occupation');
+const job = document.querySelector('.popup__input-occupation');
+const occupation = document.querySelector('.profile__occupation');
+const name = document.querySelector('.popup__input-name');
+const title = document.querySelector('.profile__title');
+const nameInput = document.querySelector('.popup__input-name');
+const jobInput = document.querySelector('.popup__input-occupation');
 
-function openedPopup() {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
-  name.value=title.textContent
-  job.value=occupation.textContent
 }
-function closedPopup() {
+
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function openedPopupAddImage() {
-  popupAddImage.classList.add('popup_opened');
-}
+popupOpenProfileEdit.addEventListener('click', () => {
+  openPopup(popupEditProfile);
+  name.value=title.textContent
+  job.value=occupation.textContent
+});
 
-function closedPopupAddImage() {
-  popupAddImage.classList.remove('popup_opened');
-}
+popupCloseProfileEdit.addEventListener('click', () => {
+  closePopup(popupEditProfile);
+});
 
-function openedPopupImage() {
-  popupImage.classList.add('popup_opened');
-}
+popupOpenImageAdd.addEventListener('click', () => {
+  openPopup(popupOpenAddImage);
+});
 
-function closedPopupImage () {
-  popupImage.classList.remove('popup_opened');
-}
+popupCloseImageAdd.addEventListener('click', () => {
+  closePopup(popupOpenAddImage);
+});
 
-popupOpenButton.addEventListener('click', openedPopup);
-popupCloseButton.addEventListener('click', closedPopup);
-popupOpenAddButton.addEventListener('click', openedPopupAddImage);
-popupCloseAddButton.addEventListener('click', closedPopupAddImage);
-popupImageClosed.addEventListener('click', closedPopupImage);
+popupImageClosed.addEventListener('click', () => {
+  closePopup(popupImage);
+});
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
   title.textContent = name.value;
   occupation.textContent = job.value;
-  closedPopup();
+  closePopup(popupEditProfile);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -90,7 +90,7 @@ function deleteHandler (evt) {
   evt.target.closest('.photo__container').remove()
 }
 
-function imageCards(cards) {
+function createCard(cards) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.photo__place');
   const cardName = cardElement.querySelector('.photo__title');
@@ -99,32 +99,36 @@ function imageCards(cards) {
   cardName.textContent = cards.name
   cardImage.src = cards.link
   cardImage.alt = cards.name
-  photos.append(cardElement)
-
-  cardImage.addEventListener('click', (cardImageOpen) => {
-    openedPopupImage(popupImage);
-    popupImageOpened.src = cardImageOpen.target.src;
-    popupImageOpened.alt = cardImageOpen.target.alt;
-    const imageSubtitle = popupImage.querySelector('.image__figcaption');
-    imageSubtitle.textContent = cardImageOpen.target.alt;
+  cardImage.addEventListener('click', (event) => {
+    popupImageOpened.src = event.target.src;
+    popupImageOpened.alt = event.target.alt;
+    imageSubtitle.textContent = event.target.alt;
+    openPopup(popupImage);
   })
   likeButton.addEventListener('click', (likeToggle) => {
     likeToggle.target.classList.toggle('photo__like_active');
   })
   deleteButton.addEventListener('click', deleteHandler);
+
+  return cardElement;
+}
+
+function renderCard(cards){
+  const cardsElements = createCard(cards)
+  photos.prepend(cardsElements);
 }
 
 function formAddHandler(evt) {
   evt.preventDefault();
   const imageNameValue = imageName.value;
   const imageLinkValue = imageLink.value;
-  imageCards({
+  renderCard({
     name: imageNameValue,
     link: imageLinkValue
   })
+  closePopup(popupOpenAddImage);
   formdAdd.reset();
-  closedPopupAddImage();
 }
 formdAdd.addEventListener('submit', formAddHandler);
 
-initialCards.forEach(imageCards);
+initialCards.forEach(renderCard)
