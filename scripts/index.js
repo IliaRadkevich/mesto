@@ -30,7 +30,7 @@ const popupOpenProfileEdit = document.querySelector('.profile__edit-button');
 const popupCloseProfileEdit = popupEditProfile.querySelector('.popup__close');
 const popupCloseImageAdd = popupOpenAddImage.querySelector('.popup__close');
 const formElement =popupEditProfile.querySelector('[name="personalinfo"]');
-const formdAdd = popupOpenAddImage.querySelector('[name="personalinfo"]');
+const formdAdd = popupOpenAddImage.querySelector('[name="imageinfo"]');
 const imageName = document.querySelector('[name="imagename"]');
 const imageLink = document.querySelector('[name="imagelink"]');
 const photos = document.querySelector('.photo');
@@ -49,11 +49,29 @@ const jobInput = document.querySelector('.popup__input-occupation');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-}
+  document.addEventListener('keydown', popupCloseByEsc);
+  popup.addEventListener('mousedown', popupCloseByOverlay);
+};
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-}
+  document.removeEventListener('keydown', popupCloseByEsc);
+  popup.removeEventListener('mousedown', popupCloseByOverlay);
+};
+
+const popupCloseByEsc = (event) => {
+  if (event.key === "Escape") {
+      const popup = document.querySelector('.popup_opened');
+      closePopup(popup);
+  }
+};
+
+const popupCloseByOverlay = (event) => {
+  if (event.target === event.currentTarget) {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+};
 
 popupOpenProfileEdit.addEventListener('click', () => {
   openPopup(popupEditProfile);
@@ -67,6 +85,7 @@ popupCloseProfileEdit.addEventListener('click', () => {
 
 popupOpenImageAdd.addEventListener('click', () => {
   openPopup(popupOpenAddImage);
+  enableValidation(configs);
 });
 
 popupCloseImageAdd.addEventListener('click', () => {
@@ -82,13 +101,13 @@ function formSubmitHandler (evt) {
   title.textContent = name.value;
   occupation.textContent = job.value;
   closePopup(popupEditProfile);
-}
+};
 
 formElement.addEventListener('submit', formSubmitHandler);
 
 function deleteHandler (evt) {
   evt.target.closest('.photo__container').remove()
-}
+};
 
 function createCard(cards) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -111,12 +130,12 @@ function createCard(cards) {
   deleteButton.addEventListener('click', deleteHandler);
 
   return cardElement;
-}
+};
 
 function renderCard(cards){
   const cardsElements = createCard(cards)
   photos.prepend(cardsElements);
-}
+};
 
 function formAddHandler(evt) {
   evt.preventDefault();
@@ -128,7 +147,7 @@ function formAddHandler(evt) {
   })
   closePopup(popupOpenAddImage);
   formdAdd.reset();
-}
+};
 formdAdd.addEventListener('submit', formAddHandler);
 
-initialCards.forEach(renderCard)
+initialCards.forEach(renderCard);

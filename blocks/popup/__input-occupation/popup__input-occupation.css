@@ -6,7 +6,7 @@
   line-height: 17px;
   color: #000000;
   vertical-align: top;
-  margin: 0 auto 48px auto;
+  margin: 13px auto 0 auto;
   padding: 0;
   width: 358px;
   height: 27px;
@@ -17,6 +17,6 @@
 @media screen and (max-width: 900px) {
   .popup__input-occupation {
     width: 238px;
-    margin: 0 22px 45px 22px;
+    margin: 0 22px 0 22px;
   }
 }
