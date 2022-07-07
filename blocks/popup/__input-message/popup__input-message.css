@@ -1,6 +1,6 @@
 .popup__input-message {
   position: absolute;
-  top: 225px;
+  top: 205px;
 }
 
 @media screen and (max-width: 900px) {
