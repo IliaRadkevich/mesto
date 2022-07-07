@@ -14,17 +14,21 @@ function hideError(input, error, {inputErrorClass, errorClass}) {
   error.textContent = '';
 };
 
-function deactivateSubmitButton (button, {inactiveButtonClass}) {
-  button.classList.add(inactiveButtonClass);
-  button.setAttribute('disabled', '');
+function deactivateSubmitButton (button, configs) {
+  button.classList.add(configs.inactiveButtonClass);
+  button.disabled = true;
+};
+
+function activateSubmitButton (button, configs) {
+  button.classList.remove(configs.inactiveButtonClass);
+  button.disabled = false;
 };
 
 function toggleButton(form, {submitButtonSelector, inactiveButtonClass}) {
   const button = form.querySelector(submitButtonSelector);
   const isFormValid = form.checkValidity();
   if(isFormValid) {
-    button.classList.remove(inactiveButtonClass);
-    button.removeAttribute('disabled');
+    activateSubmitButton (button, {inactiveButtonClass});
   } else {
     deactivateSubmitButton(button, {inactiveButtonClass});
   }
@@ -37,7 +41,6 @@ function vadlidateInput (form, input, classes) {
   } else {
     showError(input, error, classes);
   }
-  toggleButton(form, classes);
 };
 
 function enableValidation ({formSelector, inputSelector, ...rest}) {
@@ -45,12 +48,13 @@ function enableValidation ({formSelector, inputSelector, ...rest}) {
   forms.forEach( form => {
     form.addEventListener('submit', submitForm);
     const inputs = form.querySelectorAll(inputSelector);
+    toggleButton(form, rest);
     inputs.forEach( input => {
       input.addEventListener('input', () => {
         vadlidateInput(form, input, rest);
+        toggleButton(form, rest);
       });
     });
-    toggleButton(form, rest);
   });
 };
 
