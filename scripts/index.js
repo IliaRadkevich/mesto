@@ -45,14 +45,14 @@ const closePopupByOverlay = (event) => {
   }
 };
 
-function submitProfileForm (evt) {
+function handleSubmitProfileForm (evt) {
   evt.preventDefault();
   title.textContent = nameInput.value;
   occupation.textContent = jobInput.value;
   closePopup(popupEditProfile);
 };
 
-function deleteCardHandler(evt) {
+function handleDeleteCard(evt) {
   evt.target.closest('.photo__container').remove()
 };
 
@@ -74,7 +74,7 @@ function createCard(card) {
   likeButton.addEventListener('click', (likeToggle) => {
     likeToggle.target.classList.toggle('photo__like_active');
   })
-  deleteButton.addEventListener('click', deleteCardHandler);
+  deleteButton.addEventListener('click', handleDeleteCard);
 
   return cardElement;
 };
@@ -84,7 +84,7 @@ function renderCard(card){
   photos.prepend(cardsElements);
 };
 
-function addCardHandler(evt) {
+function handleAddCard(evt) {
   evt.preventDefault();
   const imageNameValue = imageName.value;
   const imageLinkValue = imageLink.value;
@@ -119,9 +119,9 @@ imagePopupCloseButton.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
-formElement.addEventListener('submit', submitProfileForm);
+formElement.addEventListener('submit', handleSubmitProfileForm);
 
-formdAdd.addEventListener('submit', addCardHandler);
+formdAdd.addEventListener('submit', handleAddCard);
 
 initialCards.forEach(renderCard);
 
